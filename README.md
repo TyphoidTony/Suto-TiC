@@ -1,5 +1,7 @@
 # Suto-TiC
-Simple Tic Tac Toe game written in Java using swing 
+Simple Tic Tac Toe game written in Java using swing
+
+
 
 # Demo
 
@@ -7,3 +9,10 @@ Simple Tic Tac Toe game written in Java using swing
 
 ![Game mode example](https://raw.githubusercontent.com/TyphoidTony/Suto-TiC/master/examples/Suto-tic_example.gif "Game
  example")
+
+# Todo
+- [x] Add Easy AI
+
+- [ ] Add normal AI
+
+- [ ] Add some sort of 'predictive analysis' for the Normal AI

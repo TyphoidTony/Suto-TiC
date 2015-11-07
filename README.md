@@ -15,4 +15,6 @@ Simple Tic Tac Toe game written in Java using swing
 
 - [ ] Add normal AI
 
+- [ ] Make it more graphical and polished
+
 - [ ] Add some sort of 'predictive analysis' for the Normal AI

@@ -349,7 +349,7 @@ public class Game extends JFrame {
     private void startOption(){
 
         Object[] options = {"Easy Game","Normal Game","Human Game"};
-        int op =  JOptionPane.showOptionDialog(null,"Pick your settings","Suto-Tic ",JOptionPane
+        int op =  JOptionPane.showOptionDialog(null,"Pick your Difficulty","Suto-Tic ",JOptionPane
                 .YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[2]);
 
         if(op==JOptionPane.OK_OPTION){

@@ -24,7 +24,6 @@ public class Game extends JFrame {
     private NormalGame nGame = new NormalGame();
 
     public Game(){
-
         startOption();
         setSize(200,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -369,30 +368,39 @@ public class Game extends JFrame {
     private JButton compLocs(int x, int y){
 
         if(x==0 && y==0){
+           nOne.setEnabled(false);
             return nOne;
         }
         if(x==0 && y==1){
+            nTwo.setEnabled(false);
             return nTwo;
         }
         if(x==0 && y==2){
+            nThree.setEnabled(false);
             return nThree;
         }
         if(x==1 && y==0){
+            nFour.setEnabled(false);
             return nFour;
         }
         if(x==1 && y==1){
+            nFive.setEnabled(false);
             return nFive;
 
         }if(x==1 && y==2){
+            nSix.setEnabled(false);
             return nSix;
         }
         if(x==2 && y==0){
+            nSeven.setEnabled(false);
             return nSeven;
         }
         if(x==2 && y==1){
+            nEight.setEnabled(false);
             return nEight;
         }
         if(x==2 && y==2){
+            nNine.setEnabled(false);
             return nNine;
         }
         return null;

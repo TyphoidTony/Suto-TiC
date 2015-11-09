@@ -312,15 +312,15 @@ public class Game extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                  if(getGameDiff() == 1){//EasyGame condition start
-                    eGame.rolls();
-                    while(board[eGame.getXPos()][eGame.getyPos()].equals("o")||board[eGame.getXPos()][eGame.getyPos()]
+                    eGame.mkRand();
+                    while(board[eGame.getX()][eGame.getY()].equals("o")||board[eGame.getX()][eGame.getY()]
                             .equals("x")){
 
-                        System.out.println(eGame.getXPos()+":"+eGame.getyPos());//Simple debug information
+                        System.out.println(eGame.getX()+":"+eGame.getY());//Simple debug information
 
-                        eGame.rolls();
+                        eGame.mkRand();
                     }
-                     gameOptionsCall(eGame.getXPos(),eGame.getyPos(), compLocs(eGame.getXPos(), eGame.getyPos()));
+                     gameOptionsCall(eGame.getX(),eGame.getY(), compLocs(eGame.getX(), eGame.getY()));
                 }
                 if(getGameDiff()== 2){//NormalGame condition start
 

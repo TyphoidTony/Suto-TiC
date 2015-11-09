@@ -4,7 +4,6 @@
  */
 public interface BasicGameLogic {
 
-
     void setPos(int x, int y);
 
     int getX();
@@ -12,7 +11,6 @@ public interface BasicGameLogic {
     int getY();
 
     void mkRand();
-
 
 
 }

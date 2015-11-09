@@ -5,30 +5,33 @@ import java.util.Random;
  * Created by Anthony Soto
  */
 
-public class EasyGame {
+public class EasyGame implements BasicGameLogic {
 
-    private int xPos;
-    private int yPos;
+    private int x;
+    private int y;
 
+    @Override
+    public void setPos(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
-    public void rolls(){
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public void mkRand(){
         Random roll = new Random();
         int x = roll.nextInt(3);
         int y = roll.nextInt(3);
         setPos(x, y);
-    }
-
-    public int getXPos(){
-        return xPos;
-    }
-
-    public int getyPos(){
-        return yPos;
-    }
-
-    public void setPos(int x, int y){
-        xPos = x;
-        yPos = y;
     }
 
 }

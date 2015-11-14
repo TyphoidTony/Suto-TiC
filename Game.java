@@ -1,3 +1,5 @@
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,30 +24,19 @@ public class Game extends JFrame {
     private int gameDiff;
     private EasyGame eGame = new EasyGame();
     private NormalGame nGame = new NormalGame();
+    private GraphicalAssets gA = new GraphicalAssets();
 
     public Game(){
         startOption();
-        setSize(200,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Suto-tic");
+        setLayout(new GridLayout(2,1));
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(3,3));
-        add(bOne());
-        add(bTwo());
-        add(bThree());
-        add(bFour());
-        add(bFive());
-        add(bSix());
-        add(bSeven());
-        add(bEight());
-        add(bNine());
-        setLayout(new FlowLayout());
-        if(getGameDiff()==1 || getGameDiff()==2){
-            add(endTurn());
-        }
-        add(turn());
+        add(numButtonPanel());
+        add(buttonPanel());
+        pack();
     }
 
     private void changeGameState(String g){
@@ -119,7 +110,11 @@ public class Game extends JFrame {
      * @param bt passes a button for the actionListener to know which button should be changed to what state
      **/
     public void gameOptionsCall(int cord,int cord2, JButton bt){
-        bt.setText(getGameState());
+        if(getGameState().equals("x")){
+            gA.applyXIcon(bt);
+        }else if(getGameState().equals("o")){
+            gA.applyOIcon(bt);
+        }
         setBoard(cord,cord2,getGameState());
         changeGameState(getGameState());
         changeTurn(getGameState());
@@ -137,22 +132,22 @@ public class Game extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 gameOptionsCall(0,0,nOne);
                 nOne.setEnabled(false);
-                setbCount(1);
+                setButtonPresses(1);
             }
         });
         panel.add(nOne);
-
         return panel;
     }
 
     private JPanel bTwo(){
         JPanel panel = new JPanel();
+
         nTwo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                gameOptionsCall(0,1,nTwo);
                nTwo.setEnabled(false);
-                setbCount(1);
+                setButtonPresses(1);
             }
         });
         panel.add(nTwo);
@@ -166,10 +161,11 @@ public class Game extends JFrame {
             public void actionPerformed(ActionEvent e) {
                gameOptionsCall(0,2,nThree);
                nThree.setEnabled(false);
-                setbCount(1);
+                setButtonPresses(1);
             }
         });
         panel.add(nThree);
+
         return panel;
     }
 
@@ -180,7 +176,7 @@ public class Game extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 gameOptionsCall(1,0,nFour);
                 nFour.setEnabled(false);
-                setbCount(1);
+                setButtonPresses(1);
             }
         });
         panel.add(nFour);
@@ -194,7 +190,7 @@ public class Game extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 gameOptionsCall(1,1,nFive);
                 nFive.setEnabled(false);
-                setbCount(1);
+                setButtonPresses(1);
             }
         });
         panel.add(nFive);
@@ -208,7 +204,7 @@ public class Game extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 gameOptionsCall(1,2,nSix);
                 nSix.setEnabled(false);
-                setbCount(1);
+                setButtonPresses(1);
             }
         });
         panel.add(nSix);
@@ -222,7 +218,7 @@ public class Game extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 gameOptionsCall(2,0,nSeven);
                 nSeven.setEnabled(false);
-                setbCount(1);
+                setButtonPresses(1);
             }
         });
         panel.add(nSeven);
@@ -236,7 +232,7 @@ public class Game extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 gameOptionsCall(2,1,nEight);
                 nEight.setEnabled(false);
-                setbCount(1);
+                setButtonPresses(1);
             }
         });
         panel.add(nEight);
@@ -250,10 +246,35 @@ public class Game extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 gameOptionsCall(2,2,nNine);
                 nNine.setEnabled(false);
-                setbCount(1);
+                setButtonPresses(1);
             }
         });
         panel.add(nNine);
+        return panel;
+    }
+
+    private JPanel numButtonPanel(){
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3,3));
+        panel.add(bOne());
+        panel.add(bTwo());
+        panel.add(bThree());
+        panel.add(bFour());
+        panel.add(bFive());
+        panel.add(bSix());
+        panel.add(bSeven());
+        panel.add(bEight());
+        panel.add(bNine());
+        return panel;
+    }
+
+    private JPanel buttonPanel(){
+        JPanel panel = new JPanel();
+
+        panel.add(turn());
+        if(getGameDiff()==1 || getGameDiff()==2) {
+            panel.add(endTurn());
+        }
         return panel;
     }
 
@@ -272,8 +293,10 @@ public class Game extends JFrame {
 
     private void winPane(){
 
+        int op;
+
         if(bCount==9){
-            int op =  JOptionPane.showConfirmDialog(null,"Cats eye! No one wins  press okay to reset the game",
+             op =  JOptionPane.showConfirmDialog(null,"Cats eye! No one wins  press okay to reset the game",
                     "Reset the game?",JOptionPane.OK_CANCEL_OPTION);
 
             if(op == JOptionPane.YES_OPTION){
@@ -281,10 +304,10 @@ public class Game extends JFrame {
             }
         }else{
 
-            int op = JOptionPane.showConfirmDialog(null, "The game is over! Press okay to reset the game",
+             op = JOptionPane.showConfirmDialog(null, "The game is over! Press okay to reset the game",
                     "Reset the game?", JOptionPane.OK_CANCEL_OPTION);
 
-            if (op == JOptionPane.YES_OPTION) {
+            if (op==JOptionPane.YES_OPTION) {
                 reset();
             }
         }
@@ -296,7 +319,7 @@ public class Game extends JFrame {
      * to make sure the cat's eye condition or 'draw' fires off when no win conditions
      * happen
      **/
-    private void setbCount(int b){
+    private void setButtonPresses(int b){
         System.out.println(bCount);
          bCount +=b;
     }
@@ -323,7 +346,7 @@ public class Game extends JFrame {
                      gameOptionsCall(eGame.getX(),eGame.getY(), compLocs(eGame.getX(), eGame.getY()));
                 }
                 if(getGameDiff()== 2){//NormalGame condition start
-
+                    //TODO just in general. This is a TODO
                 }
             }
         });

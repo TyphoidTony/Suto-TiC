@@ -1,11 +1,7 @@
-
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class Game extends JFrame {
 
@@ -26,7 +22,7 @@ public class Game extends JFrame {
     private int gameDiff;
     private EasyGame eGame = new EasyGame();
     private NormalGame nGame = new NormalGame();
-    private GraphicalAssets gA = new GraphicalAssets();
+    private GraphicalAssets gameAssets = new GraphicalAssets();
 
     public Game(){
         startOption();
@@ -105,7 +101,6 @@ public class Game extends JFrame {
         }
     }
 
-
     /**
      * @param cord for the row of the array
      * @param cord2 for the column of the array
@@ -113,9 +108,9 @@ public class Game extends JFrame {
      **/
     public void gameOptionsCall(int cord,int cord2, JButton bt){
         if(getGameState().equals("x")){
-            bt.setIcon(gA.getLetterX());
+            bt.setIcon(gameAssets.getLetterX());
         }else if(getGameState().equals("o")){
-            bt.setIcon(gA.getLetterO());
+            bt.setIcon(gameAssets.getLetterO());
         }
         setBoard(cord,cord2,getGameState());
         changeGameState(getGameState());
@@ -315,7 +310,6 @@ public class Game extends JFrame {
         }
     }
 
-
     /**@PERSONAL_NOTE
      * for debug purposes. Making sure it's keeping track of the number of blocks open
      * to make sure the cat's eye condition or 'draw' fires off when no win conditions
@@ -369,7 +363,6 @@ public class Game extends JFrame {
         return gameDiff;
     }
 
-
     private void startOption(){
 
         Object[] options = {"Easy Game","Normal Game","Human Game"};
@@ -387,9 +380,13 @@ public class Game extends JFrame {
         }else if(op==JOptionPane.CANCEL_OPTION){
 
             setGameDiff(3);
+        }else if(op==JOptionPane.CLOSED_OPTION){
+            System.exit(0);
         }
-    }
 
+
+
+    }
 
     private JButton compLocs(int x, int y){
 

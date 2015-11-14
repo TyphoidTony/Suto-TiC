@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 /**
  * Created on 11/10/2015.
  * Created by Anthony Soto
@@ -7,6 +8,7 @@ import javax.swing.*;
  * pictures from:
  * https://pixabay.com/en/users/OpenClipartVectors-30363/
  */
+
 public class GraphicalAssets{
 
     public ImageIcon getLetterX(){

@@ -1,9 +1,11 @@
 
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Game extends JFrame {
 
@@ -111,9 +113,9 @@ public class Game extends JFrame {
      **/
     public void gameOptionsCall(int cord,int cord2, JButton bt){
         if(getGameState().equals("x")){
-            gA.applyXIcon(bt);
+            bt.setIcon(gA.getLetterX());
         }else if(getGameState().equals("o")){
-            gA.applyOIcon(bt);
+            bt.setIcon(gA.getLetterO());
         }
         setBoard(cord,cord2,getGameState());
         changeGameState(getGameState());
@@ -328,7 +330,7 @@ public class Game extends JFrame {
         turn.setText(t+"'s turn");
     }
 
-    private JPanel  endTurn(){
+    private JPanel endTurn(){
         JPanel panel = new JPanel();
         panel.add(nTurn);
         nTurn.addActionListener(new ActionListener() {
@@ -387,6 +389,7 @@ public class Game extends JFrame {
             setGameDiff(3);
         }
     }
+
 
     private JButton compLocs(int x, int y){
 

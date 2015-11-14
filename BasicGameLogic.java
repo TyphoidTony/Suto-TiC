@@ -12,5 +12,4 @@ public interface BasicGameLogic {
 
     void mkRand();
 
-
 }

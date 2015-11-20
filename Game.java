@@ -34,7 +34,7 @@ public class Game extends JFrame {
         setLocationRelativeTo(null);
         add(numButtonPanel());
         add(buttonPanel());
-        pack();
+        setSize(150,200);
     }
 
     private void changeGameState(String g){
@@ -116,6 +116,7 @@ public class Game extends JFrame {
         changeGameState(getGameState());
         changeTurn(getGameState());
         winConditions();
+        repaint();
     }
 
     private void setBoard(int cord,int cord2,String gameState){

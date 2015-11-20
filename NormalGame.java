@@ -30,6 +30,7 @@ public class NormalGame implements BasicGameLogic{
         return y;
     }
 
+
     @Override
     public void mkRand(){
 
@@ -39,16 +40,39 @@ public class NormalGame implements BasicGameLogic{
         setPos(x, y);
     }
 
+    /**
+     * @param gameBoard parameter that passes the gameBoard to this method
+     * @param pX the players current X position on the board
+     * @param pY the players current Y position on the board
+     *
+     *           Over all this method is going to be a somewhat brute force
+     * and a somewhat simple attempt at trying to prevent the player from
+     * winning the game. NOTE! THIS SHOULD NOT BE TRYING TO WIN THE GAME EVER!
+     */
+    public void search(String[][] gameBoard, int pX, int pY){
 
-    private void searchWin(){
-        /**
-         * Need to continue working on this.
-         * My plan is to have it follow the player for the first 2
-         * turns. Then see where that player's likely going to do based on their over
-         * all position(s) on the game board.
-         *
-         */
+        if(gameBoard[1][1].equals("x")){
+            rCorner();
+        }
+
     }
+
+    //Random corner square.
+    private void rCorner(){
+        Random rn = new Random();
+       int roll = rn.nextInt(3);
+
+        if(roll==0){
+            setPos(0,0);
+        }else if(roll==1){
+            setPos(0,2);
+        }else if(roll==2){
+            setPos(2,0);
+        }else if(roll==3){
+            setPos(2,2);
+        }
+    }
+
 
 
 }

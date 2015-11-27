@@ -116,7 +116,7 @@ public class Game extends JFrame {
         changeGameState(getGameState());
         changeTurn(getGameState());
         winConditions();
-        repaint();
+        
     }
 
     private void setBoard(int cord,int cord2,String gameState){
